@@ -5,27 +5,24 @@ import org.chu.ecommercemvc.model.bo.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
     private BaseService<Product, Long> productService;
 
-    @GetMapping("/products")
-    public String listProducts(Model model) {
+    @GetMapping("")
+    public List<Product> listProducts(){
         List<Product> products = productService.findAll();
-        model.addAttribute("products", products);
-        model.addAttribute("product", new Product());
-        return "products";
+        return products;
     }
 
-    @PostMapping("/products")
+    @PostMapping("")
     public String saveProduct(@ModelAttribute("product") Product product) {
         productService.save(product);
         return "redirect:/products";
