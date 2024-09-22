@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Products List</title>
+</head>
+<body>
+<h1>Manage Products</h1>
+
+<!-- Product Creation Form -->
+<h2>Create New Product</h2>
+<form th:action="@{/products}" th:object="${product}" method="post">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" placeholder="Product Name" required/>
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    <input type="number" id="price" th:field="*{price}" placeholder="Price" step="0.01" required/>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" th:field="*{description}" placeholder="Product Description"></textarea>
+  </div>
+  <div>
+    <button type="submit">Add Product</button>
+  </div>
+</form>
+
+<!-- Product List -->
+<h2>Existing Products</h2>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="product : ${products}">
+    <td th:text="${product.id}"></td>
+    <td th:text="${product.name}"></td>
+    <td th:text="${product.price}"></td>
+    <td th:text="${product.description}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<a th:href="@{/dashboard}">Back to Dashboard</a>
+</body>
+</html>
