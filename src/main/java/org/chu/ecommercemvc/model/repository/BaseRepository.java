@@ -1,11 +1,9 @@
 package org.chu.ecommercemvc.model.repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.stereotype.Repository;
 
-public interface BaseRepository<T> {
-    List<T> findAll();
-    T findById(int id);
-    T save(T t);
-    T update(T t);
-    void delete(T t);
+@NoRepositoryBean
+public interface BaseRepository<T, U> extends JpaRepository<T, U> {
 }

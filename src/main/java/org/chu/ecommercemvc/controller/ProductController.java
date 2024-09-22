@@ -15,11 +15,11 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private BaseService<Product> productService;
+    private BaseService<Product, Long> productService;
 
     @GetMapping("/products")
     public String listProducts(Model model) {
-        List<Product> products = productService.getAllProducts();
+        List<Product> products = productService.findAll();
         model.addAttribute("products", products);
         model.addAttribute("product", new Product());
         return "products";
@@ -27,7 +27,7 @@ public class ProductController {
 
     @PostMapping("/products")
     public String saveProduct(@ModelAttribute("product") Product product) {
-        productService.saveProduct(product);
+        productService.save(product);
         return "redirect:/products";
     }
 }
