@@ -1,4 +1,4 @@
-package org.chu.ecommercemvc.model.dao;
+package org.chu.ecommercemvc.model.repository;
 
 import org.chu.ecommercemvc.model.bean.User;
 import org.springframework.data.jpa.repository.JpaRepository;

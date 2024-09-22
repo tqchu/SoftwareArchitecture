@@ -1,7 +1,6 @@
 package org.chu.ecommercemvc.controller;
 
 import org.chu.ecommercemvc.model.bean.User;
-import org.chu.ecommercemvc.model.bo.UserService;
 import org.chu.ecommercemvc.model.dto.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
