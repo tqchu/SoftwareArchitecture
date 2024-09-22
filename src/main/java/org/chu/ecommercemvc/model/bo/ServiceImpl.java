@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public class ServiceImpl<T, U> implements BaseService<T, U> {
     @Autowired
-    private BaseRepository<T, U> repository;
+    protected BaseRepository<T, U> repository;
 
     @Override
     public List<T> findAll() {

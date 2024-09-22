@@ -1,10 +1,8 @@
 package org.chu.ecommercemvc.controller;
 
 import org.chu.ecommercemvc.model.bean.Product;
-import org.chu.ecommercemvc.model.bo.BaseService;
+import org.chu.ecommercemvc.model.bo.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,12 +12,11 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private BaseService<Product, Long> productService;
+    private ProductService productService;
 
     @GetMapping("")
-    public List<Product> listProducts(){
-        List<Product> products = productService.findAll();
-        return products;
+    public List<Product> listProducts() {
+        return productService.findAll();
     }
 
     @PostMapping("")
